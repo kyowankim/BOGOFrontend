@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 import BogoLayout from '../components/BogoLayout';
 import { BogoStoreResponse, BogoStores } from '@/app/types';
 
-export default async function ({ searchParams }: { searchParams: Promise<{ [key: string]: string }> }) {
+export default async function BogoResultsPage({ searchParams }: { searchParams: Promise<{ [key: string]: string }> }) {
   const params = await searchParams;
   const address: string = params.address;
 
