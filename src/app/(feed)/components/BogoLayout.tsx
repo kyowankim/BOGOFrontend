@@ -83,17 +83,3 @@ export default function BogoLayout({ stores }: { stores: BogoStores[] }) {
     );
 }
 
-enum Filter {
-    RESET = "Reset",
-    PIZZA = "Pizza",
-    ASIAN = "Asian",
-    MEXICAN = "Mexican",
-    ITALIAN = "Italian"
-}
-
-enum Sort {
-    NONE = 0,
-    PRICE = 1,
-    DELIVERY_TIME = 2
-}
-

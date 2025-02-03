@@ -1,7 +1,7 @@
 "use client"; // This must be a Client Component
 import { useRouter } from "next/navigation";
 
-export default function ErrorPage({ error, reset }: { error: Error; reset: () => void }) {
+export default function ErrorPage({ error }: { error: Error }) {
     const router = useRouter();
 
     const err = JSON.parse(error.message);

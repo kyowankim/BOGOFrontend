@@ -3,9 +3,9 @@ import { redirect } from 'next/navigation';
 import BogoLayout from '../components/BogoLayout';
 import { BogoStoreResponse, BogoStores } from '@/app/types';
 
-export default async function Home({ searchParams }: { searchParams: { [key: string]: string } }) {
-  const params = await searchParams
-  const address: string = params.address
+export default async function ({ searchParams }: { searchParams: Promise<{ [key: string]: string }> }) {
+  const params = await searchParams;
+  const address: string = params.address;
 
   //Redirect back to home if address is not set
   if (!address) {
