@@ -1,8 +1,13 @@
-'use client';
+"use client"
 
-import { motion } from 'framer-motion';
+import { useEffect } from "react";
+import { motion } from "framer-motion";
 
 export default function Loading() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <div className="space-y-4">
             {/* Skeleton for Navbar */}
@@ -17,7 +22,7 @@ export default function Loading() {
             </nav>
 
             {/* Skeleton for BogoStores Layout */}
-            <div className="relative min-h-screen px-6 py-12 bg-gradient-to-br animate-pulse pt-20"> {/* Add pt-20 to account for the fixed Navbar */}
+            <div className="relative min-h-screen px-6 py-12 bg-white pt-20">
                 <motion.div
                     className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
                     initial={{ opacity: 0, y: 20 }}
@@ -29,20 +34,20 @@ export default function Loading() {
                             <div className="w-full max-w-md mx-auto bg-white rounded-3xl shadow-xl overflow-hidden border-[3px] border-black rounded-[22px] shadow-200 hover:border-primary transition-all duration-500 hover:shadow-300 hover:bg-primary-100 flex flex-col h-full">
 
                                 {/* Image Skeleton */}
-                                <div className="h-[236px] bg-gray-500 animate-pulse"></div>
+                                <div className="h-[236px] bg-gray-200 animate-pulse"></div>
 
                                 {/* Content Skeleton */}
                                 <div className="p-4 flex-grow flex flex-col">
-                                    <div className="w-32 h-6 bg-gray-500 rounded-md mb-4 animate-pulse"></div>
+                                    <div className="w-32 h-6 bg-gray-300 rounded-md mb-4 animate-pulse"></div>
                                     <div className="space-y-2">
-                                        <div className="w-full h-6 bg-gray-500 rounded-md animate-pulse"></div>
-                                        <div className="w-full h-6 bg-gray-500 rounded-md animate-pulse"></div>
-                                        <div className="w-full h-6 bg-gray-500 rounded-md animate-pulse"></div>
+                                        <div className="w-full h-6 bg-gray-200 rounded-md animate-pulse"></div>
+                                        <div className="w-full h-6 bg-gray-200 rounded-md animate-pulse"></div>
+                                        <div className="w-full h-6 bg-gray-200 rounded-md animate-pulse"></div>
                                     </div>
                                 </div>
 
-                                <div className="mt-auto border-t border-gray/20 pt-4 pb-3 px-4">
-                                    <div className="w-24 h-6 bg-gray-500 rounded-md animate-pulse"></div>
+                                <div className="mt-auto border-t border-gray-200 pt-4 pb-3 px-4">
+                                    <div className="w-24 h-6 bg-gray-200 rounded-md animate-pulse"></div>
                                 </div>
                             </div>
                         </div>

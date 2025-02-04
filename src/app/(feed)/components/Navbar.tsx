@@ -49,12 +49,14 @@ const Navbar = ({ bogoStores, setBogoStores }: { bogoStores: BogoStores[], setBo
         const value = event.target.value;
         setFilterBy(value);
         filterStores(value);
+        setIsMenuOpen(false);
     };
 
     const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const value = event.target.value;
         setSortBy(value);
         sortStores(sortDisplayValues.get(value)!);
+        setIsMenuOpen(false)
     };
 
     return (
@@ -64,7 +66,7 @@ const Navbar = ({ bogoStores, setBogoStores }: { bogoStores: BogoStores[], setBo
         >
             {/* Fixed Navbar */}
             <nav className="fixed top-0 left-0 w-full bg-gray-800 text-white z-50">
-                <div className="flex justify-between items-center p-4 container mx-auto">
+                <div className="flex justify-between items-center p-4 w-full">
                     <Link href="/" className="flex items-center space-x-2 text-white text-2xl font-semibold hover:opacity-90 transition duration-300 ease-in-out">
                         <Image
                             src="/bogo.png" // Path to your image in the public folder
@@ -85,7 +87,7 @@ const Navbar = ({ bogoStores, setBogoStores }: { bogoStores: BogoStores[], setBo
                     {/* Menu Options for Desktop and Mobile */}
                     <div className={`flex-1 flex justify-end items-center ${isMenuOpen ? 'flex-col absolute top-16 left-0 w-full bg-gray-800 p-6 z-50' : 'hidden lg:flex'}`}>
                         {/* Sorting Dropdown */}
-                        <div className="flex flex-col pr-5 lg:flex-row lg:items-center lg:space-x-4 mb-4 lg:mb-0 w-full lg:w-auto">
+                        <div className="flex flex-col pr-5 pb-3 sm:pb-0 lg:flex-row lg:items-center lg:space-x-4 mb-4 lg:mb-0 w-full lg:w-auto">
                             <span className="text-lg pr-2 mb-2 lg:mb-0">Sort By:</span>
                             <select
                                 className="bg-gray-700 p-3 rounded-md text-white w-full lg:w-36"
@@ -99,7 +101,7 @@ const Navbar = ({ bogoStores, setBogoStores }: { bogoStores: BogoStores[], setBo
                         </div>
 
                         {/* Filtering Dropdown */}
-                        <div className="flex flex-col pr-5 lg:flex-row lg:items-center lg:space-x-4 w-full lg:w-auto">
+                        <div className="flex flex-col pr-5 pb-3 sm:pb-0 lg:flex-row lg:items-center lg:space-x-4 w-full lg:w-auto">
                             <span className="text-lg pr-2 mb-2 lg:mb-0">Filter By:</span>
                             <select
                                 className="bg-gray-700 p-3 rounded-md text-white w-full lg:w-36"

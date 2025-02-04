@@ -8,24 +8,22 @@ import Navbar from './Navbar';
 export default function BogoLayout({ stores }: { stores: BogoStores[] }) {
     const [bogoStores, setBogoStores] = useState<BogoStores[]>(stores);
 
-    //Format Delivery time 
+    // Format Delivery time 
     const displayDeliveryTime = (etaText: string) => {
-        const range = etaText.split(" ")[0] //10-10
-        const etaValues = range.split("–")
+        const range = etaText.split(" ")[0]; //10-10
+        const etaValues = range.split("–");
         if (etaValues[0] === etaValues[1]) {
-            return etaValues[0]
+            return etaValues[0];
         } else {
-            return range
+            return range;
         }
-    }
+    };
 
     return (
-        <div className="space-y-4 ">
+        <div className="space-y-4">
             <Navbar bogoStores={bogoStores} setBogoStores={setBogoStores} />
 
-            <div className="relative min-h-screen px-6 py-12 bg-gradient-to-br">
-                {/* Dark Overlay for Contrast */}
-                <div className="absolute inset-0"></div>
+            <div className="relative min-h-screen px-6 py-12 bg-white">
 
                 {/* Grid Layout */}
                 <motion.div
@@ -50,14 +48,18 @@ export default function BogoLayout({ stores }: { stores: BogoStores[] }) {
                                 </div>
 
                                 {/* Content Section */}
-                                <div className="p-4 flex-grow flex flex-col">
+                                <div className="p-4 flex-grow flex flex-col text-black">
                                     <p className="font-bold text-black-700 text-[22px] leading-7 mb-1 text-left">{store.title}</p>
 
                                     {/* BOGO Foods List */}
                                     <div className="mt-4 space-y-2 flex-grow">
                                         {store.bogoFoods.map((bogoFood, index) => (
                                             <div className="flex items-start justify-between space-x-2" key={index}>
-                                                <span className="text-black"> • {bogoFood.title}</span>
+                                                <div className='flex items-start'>
+                                                    <span>•</span>
+                                                    <span className="text-black pl-2">{bogoFood.title}</span>
+                                                </div>
+
                                                 <span className="font-medium text-purple-500">
                                                     ${(bogoFood.price / 100).toFixed(2)}
                                                 </span>
@@ -67,10 +69,9 @@ export default function BogoLayout({ stores }: { stores: BogoStores[] }) {
                                 </div>
 
                                 <div className="mt-auto border-t border-gray/20 pt-4 pb-3 px-4">
-
-
-                                    <p className="text-black-300 text-md text-left">
-                                        <span className="font-medium text-blue-500">{displayDeliveryTime(store.etaRange.text)}</span> Min Delivery
+                                    <p className="text-md text-left">
+                                        <span className="font-medium text-blue-500">{displayDeliveryTime(store.etaRange.text)} </span>
+                                        <span className="text-black">Min Delivery</span>
                                     </p>
                                 </div>
 
@@ -82,4 +83,3 @@ export default function BogoLayout({ stores }: { stores: BogoStores[] }) {
         </div>
     );
 }
-
