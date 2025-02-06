@@ -2,6 +2,7 @@ import React from 'react'
 import { redirect } from 'next/navigation';
 import BogoLayout from '../components/BogoLayout';
 import { BogoStoreResponse, BogoStores } from '@/app/types';
+import { ExcessRequestError, InvalidLocationError, ServerError } from '@/app/exeptions';
 
 export default async function BogoResultsPage({ searchParams }: { searchParams: Promise<{ [key: string]: string }> }) {
   const params = await searchParams;
@@ -33,10 +34,15 @@ async function getBogoStores(address: string) {
       address: address
     })
   })
+
   if (!response.ok) {
-    const errorData = await response.json();
-    errorData.status = response.status;
-    throw new Error(JSON.stringify(errorData));
+    if (response.status === 404) {
+      throw new InvalidLocationError()
+    } else if (response.status === 429) {
+      throw new ExcessRequestError()
+    } else {
+      throw new ServerError()
+    }
   }
 
   const json: BogoStoreResponse = await response.json()
